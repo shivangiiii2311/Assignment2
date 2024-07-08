@@ -7,5 +7,5 @@ const ProductSchema = new mongoose.Schema({
   shippingCost: Number
 });
 
-const Product = mongoose.model('Product', ProductSchema);
-module.exports = Product;
+const ProductModel = mongoose.model('Product', ProductSchema);
+module.exports = ProductModel;

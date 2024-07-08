@@ -8,5 +8,5 @@ const UserSchema = new mongoose.Schema({
   shippingAddress: String
 });
 
-const User = mongoose.model('User', UserSchema);
-module.exports = User;
+const UserModel = mongoose.model('User', UserSchema);
+module.exports = UserModel;

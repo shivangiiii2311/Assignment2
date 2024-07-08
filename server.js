@@ -2,9 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
-
-// Middleware
 app.use(bodyParser.json());
+
+const userRoute = require('./routes/user_route');
+
+const productRoute = require('./routes/product_route');
+const orderRoute = require('./routes/order_route');
+const cartRoute = require('./routes/cart_route');
+
+const commentRoute = require('./routes/comment_route');
+
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://shivangiii2311:6BBCMOpUeyrijATP@assignment2.1fm7jii.mongodb.net/?retryWrites=true&w=majority&appName=Assignment2', {
@@ -12,20 +19,13 @@ mongoose.connect('mongodb+srv://shivangiii2311:6BBCMOpUeyrijATP@assignment2.1fm7
   useUnifiedTopology: true
 });
 
-// Routes
-const product = require('./routes/product');
-const user = require('./routes/user');
-const comment = require('./routes/comment');
-const cart = require('./routes/cart');
-const order= require('./routes/order');
-
-app.use('/products', product);
-app.use('/users', user);
-app.use('/comments', comment);
-app.use('/carts', cart);
-app.use('/orders', order);
+app.use('/user', userRoute);
+app.use('/product', productRoute);
+app.use('/order', orderRoute);
+app.use('/cart', cartRoute);
+app.use('/comment', commentRoute);
 
 // Start the server on port 8080
-server.listen(8080, function () {
+app.listen(8080, function () {
     console.log(`Server is running on http://localhost:8080`);
 });
